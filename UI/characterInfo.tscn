@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://e5nk2sq1fvrk"]
+
+[node name="characterInfo" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="portrait" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="labels" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="name" type="Label" parent="labels"]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="labels"]
+layout_mode = 2
+
+[node name="MP" type="Label" parent="labels"]
+layout_mode = 2
+
+[node name="next" type="Label" parent="labels"]
+layout_mode = 2

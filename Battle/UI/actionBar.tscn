@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyuabjtbr2ktd"]
+
+[ext_resource type="Script" uid="uid://crpigi01jo3fh" path="res://Battle/UI/actionBar.gd" id="1_q6lda"]
+
+[node name="actionBar" type="Panel"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+script = ExtResource("1_q6lda")
+
+[node name="slotContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

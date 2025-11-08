@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c44kxw6bjv32a"]
+
+[ext_resource type="Script" uid="uid://dlst4qc61juup" path="res://UI/cursor.gd" id="1_4h7yh"]
+
+[node name="Cursor" type="ColorRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4h7yh")

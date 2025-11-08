@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="HeroData" load_steps=7 format=3 uid="uid://4mxgj8wjlsc6"]
+
+[ext_resource type="Script" uid="uid://b66jhbh22yqw7" path="res://Resources/heroData.gd" id="1_0q8cs"]
+[ext_resource type="Resource" uid="uid://c3isd1dn58pqf" path="res://Heroes/Graphics/Stats/CirnoBase.tres" id="1_sluk2"]
+[ext_resource type="Script" uid="uid://fg7av2pufmrp" path="res://Resources/skills.gd" id="2_jeu6f"]
+[ext_resource type="SpriteFrames" uid="uid://mfs5614uku7c" path="res://Heroes/Graphics/Sprite Frames/Cirno.tres" id="4_oo5n5"]
+[ext_resource type="Script" uid="uid://b1i1spvdeh5oj" path="res://Resources/statGrowth.gd" id="5_5oiq0"]
+
+[sub_resource type="Resource" id="Resource_31l45"]
+script = ExtResource("5_5oiq0")
+originalStats = ExtResource("1_sluk2")
+formulas = {
+"atk": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"def": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"maxHP": {
+"curve": 2.0,
+"flat": 5.0,
+"scale": 0.8
+},
+"maxMP": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"mgk": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"res": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"spd": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+}
+}
+metadata/_custom_type_script = "uid://b1i1spvdeh5oj"
+
+[resource]
+script = ExtResource("1_0q8cs")
+id = ""
+name = "Cirno"
+level = 1
+totalExp = 0
+toNextLevel = 0
+baseStats = ExtResource("1_sluk2")
+statGrowth = SubResource("Resource_31l45")
+sprite = ExtResource("4_oo5n5")
+weakTo = Array[int]([1])
+skills = Array[ExtResource("2_jeu6f")]([])
+metadata/_custom_type_script = "uid://b66jhbh22yqw7"

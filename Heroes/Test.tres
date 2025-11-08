@@ -1,0 +1,113 @@
+[gd_resource type="Resource" script_class="HeroData" load_steps=14 format=3 uid="uid://bj8k6qg5cwxp1"]
+
+[ext_resource type="Script" uid="uid://b66jhbh22yqw7" path="res://Resources/heroData.gd" id="1_b7kx8"]
+[ext_resource type="Script" uid="uid://c0aabsc00erb6" path="res://Resources/statBlock.gd" id="1_pc58o"]
+[ext_resource type="Script" uid="uid://fg7av2pufmrp" path="res://Resources/skills.gd" id="2_grt2m"]
+[ext_resource type="Resource" uid="uid://b0f4aiaeoga7u" path="res://Skills/attackPhys.tres" id="4_bcli5"]
+[ext_resource type="Texture2D" uid="uid://b1ry6i811qcp3" path="res://Overworld/reemuh overworld.png" id="4_wrrvt"]
+[ext_resource type="Texture2D" uid="uid://cv7ybl2ijlqn6" path="res://Kanan-chan.png" id="5_bcli5"]
+[ext_resource type="Script" uid="uid://b1i1spvdeh5oj" path="res://Resources/statGrowth.gd" id="6_5wlb1"]
+
+[sub_resource type="Resource" id="Resource_f6dlb"]
+script = ExtResource("1_pc58o")
+maxHP = 10
+HP = 10
+maxMP = 10
+MP = 10
+atk = 10
+def = 10
+mgk = 10
+res = 10
+spd = 20
+ticks = 0
+tickBonus = 0
+metadata/_custom_type_script = "uid://c0aabsc00erb6"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcqno"]
+atlas = ExtResource("4_wrrvt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fr14"]
+atlas = ExtResource("4_wrrvt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ennqt"]
+atlas = ExtResource("5_bcli5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1p4kv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcqno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fr14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ennqt")
+}],
+"loop": true,
+"name": &"ready",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_t54lw"]
+script = ExtResource("6_5wlb1")
+formulas = {
+"atk": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"def": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"maxHP": {
+"curve": 2.0,
+"flat": 5.0,
+"scale": 0.8
+},
+"maxMP": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"mgk": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"res": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+},
+"spd": {
+"curve": 1.8,
+"flat": 2.0,
+"scale": 0.5
+}
+}
+metadata/_custom_type_script = "uid://b1i1spvdeh5oj"
+
+[resource]
+script = ExtResource("1_b7kx8")
+id = "Y"
+name = "Yuu"
+level = 1
+totalExp = 0
+toNextLevel = 0
+baseStats = SubResource("Resource_f6dlb")
+statGrowth = SubResource("Resource_t54lw")
+sprite = SubResource("SpriteFrames_1p4kv")
+weakTo = Array[int]([])
+skills = Array[ExtResource("2_grt2m")]([ExtResource("4_bcli5")])
+metadata/_custom_type_script = "uid://b66jhbh22yqw7"

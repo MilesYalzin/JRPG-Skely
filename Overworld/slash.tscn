@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://pk166o6t4jsl"]
+
+[ext_resource type="Script" uid="uid://bwpar71q8f5yf" path="res://Overworld/slash.gd" id="1_h2lby"]
+[ext_resource type="Texture2D" uid="uid://kyr4hd60v1a2" path="res://slash-sheet.png" id="1_hiou4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2lby"]
+size = Vector2(24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm2k4"]
+atlas = ExtResource("1_hiou4")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07qgq"]
+atlas = ExtResource("1_hiou4")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol56v"]
+atlas = ExtResource("1_hiou4")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5yj0"]
+atlas = ExtResource("1_hiou4")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aawfl"]
+atlas = ExtResource("1_hiou4")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3sue"]
+atlas = ExtResource("1_hiou4")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v31l"]
+atlas = ExtResource("1_hiou4")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbt4w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm2k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07qgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol56v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5yj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aawfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3sue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v31l")
+}],
+"loop": false,
+"name": &"slash",
+"speed": 10.0
+}]
+
+[node name="slash" type="Area2D"]
+script = ExtResource("1_h2lby")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h2lby")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.19209e-07, -1.2219e-06)
+scale = Vector2(1, 1.33333)
+sprite_frames = SubResource("SpriteFrames_qbt4w")
+animation = &"slash"
+autoplay = "slash"
+frame = 3
+frame_progress = 0.769514

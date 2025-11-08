@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtpiv5j0ufrcs"]
+
+[ext_resource type="Texture2D" uid="uid://b1ry6i811qcp3" path="res://Overworld/reemuh overworld.png" id="1_hpjvf"]
+[ext_resource type="Script" uid="uid://cfw8a8rp8tg86" path="res://Overworld/playerOverworld.gd" id="1_q2cw2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2cw2"]
+atlas = ExtResource("1_hpjvf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls0qk"]
+atlas = ExtResource("1_hpjvf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5w56m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2cw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls0qk")
+}],
+"loop": true,
+"name": &"walkDown",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0k1c"]
+size = Vector2(25, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpjvf"]
+size = Vector2(25, 34)
+
+[node name="playerOverworld" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_q2cw2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5w56m")
+animation = &"walkDown"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_v0k1c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_hpjvf")
+
+[node name="Camera2D" type="Camera2D" parent="."]

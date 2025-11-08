@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d2lu3a8wsfwjm"]
+
+[ext_resource type="Texture2D" uid="uid://bkc3uek1af210" path="res://UI/GenericMenu-1.png" id="1_mg8jf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pyjol"]
+texture = ExtResource("1_mg8jf")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_pyjol")

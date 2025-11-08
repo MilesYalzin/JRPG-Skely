@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Skills" load_steps=2 format=3 uid="uid://b0f4aiaeoga7u"]
+
+[ext_resource type="Script" uid="uid://fg7av2pufmrp" path="res://Resources/skills.gd" id="1_achcd"]
+
+[resource]
+script = ExtResource("1_achcd")
+id = "atk"
+displayName = "Attack"
+description = ""
+cost = 0
+tickCost = 500
+element = 0
+skillType = "Offensive"
+basePower = 1.0
+ignorePercent = 0.0
+template = "phys"
+isAoE = false
+accuracy = 1.0
+defaultTarget = 0
+validTargets = 0
+battleOnly = true
+metadata/_custom_type_script = "uid://fg7av2pufmrp"

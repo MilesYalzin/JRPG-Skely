@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxd7n0run0blh"]
+
+[ext_resource type="Script" uid="uid://cr5kfpf5trd4t" path="res://Battle/battleScene.gd" id="1_xbxbx"]
+[ext_resource type="PackedScene" uid="uid://dyuabjtbr2ktd" path="res://Battle/UI/actionBar.tscn" id="2_xc8ae"]
+[ext_resource type="Script" uid="uid://dgj16snmbqtih" path="res://Battle/playerUI.gd" id="3_wmfmv"]
+[ext_resource type="Script" uid="uid://d24gehyw4ewdt" path="res://Battle/damageSpawner.gd" id="4_eadqo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jwny"]
+size = Vector2(640, 360)
+
+[node name="battleScene" type="Node2D"]
+process_mode = 2
+script = ExtResource("1_xbxbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="musicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="heroSpawnPoints" type="Node2D" parent="."]
+position = Vector2(960, 360)
+
+[node name="Marker2D" type="Marker2D" parent="heroSpawnPoints"]
+position = Vector2(-176, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="heroSpawnPoints"]
+position = Vector2(-144, -32)
+
+[node name="Marker2D3" type="Marker2D" parent="heroSpawnPoints"]
+position = Vector2(-144, 32)
+
+[node name="Marker2D4" type="Marker2D" parent="heroSpawnPoints"]
+position = Vector2(-112, 64)
+
+[node name="Marker2D5" type="Marker2D" parent="heroSpawnPoints"]
+position = Vector2(-112, -64)
+
+[node name="enemySpawnPoints" type="Node2D" parent="."]
+position = Vector2(320, 384)
+
+[node name="Marker2D6" type="Marker2D" parent="enemySpawnPoints"]
+position = Vector2(232, -24)
+
+[node name="Marker2D7" type="Marker2D" parent="enemySpawnPoints"]
+position = Vector2(160, -96)
+
+[node name="Marker2D" type="Marker2D" parent="enemySpawnPoints"]
+position = Vector2(160, 32)
+
+[node name="Marker2D2" type="Marker2D" parent="enemySpawnPoints"]
+position = Vector2(160, -24)
+
+[node name="Marker2D3" type="Marker2D" parent="enemySpawnPoints"]
+position = Vector2(232, -96)
+
+[node name="Marker2D4" type="Marker2D" parent="enemySpawnPoints"]
+position = Vector2(232, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(640, 360)
+shape = SubResource("RectangleShape2D_0jwny")
+
+[node name="battleUI" type="CanvasLayer" parent="."]
+
+[node name="topUI" type="HBoxContainer" parent="battleUI"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.15
+offset_top = 16.0
+
+[node name="actionBar" parent="battleUI/topUI" instance=ExtResource("2_xc8ae")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="battleUI/topUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="playerUI" type="VBoxContainer" parent="battleUI/topUI/PanelContainer"]
+layout_mode = 2
+script = ExtResource("3_wmfmv")
+
+[node name="damageSpawner" type="Control" parent="battleUI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_eadqo")

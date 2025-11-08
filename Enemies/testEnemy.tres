@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=8 format=3 uid="uid://d1773d3rg5qat"]
+
+[ext_resource type="Script" uid="uid://bwokddw0rg2j" path="res://Resources/enemyData.gd" id="1_l5jw0"]
+[ext_resource type="Script" uid="uid://c0aabsc00erb6" path="res://Resources/statBlock.gd" id="1_n1j82"]
+[ext_resource type="PackedScene" uid="uid://cm52cuv8vvykv" path="res://Enemies/AIs/basic.tscn" id="1_pog4k"]
+[ext_resource type="Script" uid="uid://fg7av2pufmrp" path="res://Resources/skills.gd" id="2_s4bg0"]
+[ext_resource type="Resource" uid="uid://b0f4aiaeoga7u" path="res://Skills/attackPhys.tres" id="4_pog4k"]
+[ext_resource type="Texture2D" uid="uid://bvkd6aecf14ht" path="res://Overworld/3rd person.png" id="5_txax4"]
+
+[sub_resource type="Resource" id="Resource_oxguj"]
+script = ExtResource("1_n1j82")
+maxHP = 10
+HP = 10
+maxMP = 10
+MP = 10
+atk = 10
+def = 10
+mgk = 10
+res = 10
+spd = 20
+ticks = 0
+tickBonus = 0
+metadata/_custom_type_script = "uid://c0aabsc00erb6"
+
+[resource]
+script = ExtResource("1_l5jw0")
+id = ""
+num = 0
+name = "Artoria"
+baseStats = SubResource("Resource_oxguj")
+AI = ExtResource("1_pog4k")
+sprite = ExtResource("5_txax4")
+expDrop = 100
+skills = Array[ExtResource("2_s4bg0")]([ExtResource("4_pog4k")])
+weakTo = Array[int]([])
+metadata/_custom_type_script = "uid://bwokddw0rg2j"

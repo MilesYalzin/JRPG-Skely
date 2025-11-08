@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cybdo71b34vis"]
+
+[ext_resource type="Texture2D" uid="uid://shk8le0k5fav" path="res://Overworld/checky board.png" id="1_fhfpw"]
+[ext_resource type="Script" uid="uid://b4pbhy7gxrn3h" path="res://Overworld/sceneSwitcher.gd" id="2_qp5jn"]
+[ext_resource type="Script" uid="uid://vhscy7wlwkno" path="res://Overworld/sizeMatch.gd" id="3_qp5jn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp5jn"]
+size = Vector2(32, 32)
+
+[node name="sceneSwitcherRoot" type="NinePatchRect"]
+texture_repeat = 2
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_fhfpw")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="sceneSwitcher" type="Area2D" parent="."]
+script = ExtResource("2_qp5jn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sceneSwitcher"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_qp5jn")
+script = ExtResource("3_qp5jn")
+
+[connection signal="body_entered" from="sceneSwitcher" to="sceneSwitcher" method="_on_body_entered"]

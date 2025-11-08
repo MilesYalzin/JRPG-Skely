@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cfmhl5mau2kve"]
+
+[node name="playerUISlot" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="name" type="Label" parent="."]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="MPLabel" type="Label" parent="."]
+layout_mode = 2

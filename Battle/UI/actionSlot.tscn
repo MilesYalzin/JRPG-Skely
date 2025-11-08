@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://hoit8cv07kp3"]
+
+[node name="actionSlot" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_right = 4.0
+offset_bottom = 27.0
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://waangk2lphaj"]
+
+[ext_resource type="Script" uid="uid://bwln3wn85711m" path="res://UI/menuClass.gd" id="1_gaf42"]
+[ext_resource type="PackedScene" uid="uid://c44kxw6bjv32a" path="res://UI/cursor.tscn" id="2_18cyp"]
+
+[node name="menuRoot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gaf42")
+
+[node name="buttonList" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Cursor" parent="." instance=ExtResource("2_18cyp")]
+layout_mode = 0

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm52cuv8vvykv"]
+
+[ext_resource type="Script" uid="uid://bs3i26hivw251" path="res://Enemies/AIs/basic.gd" id="1_todoq"]
+
+[node name="Basic" type="Node"]
+script = ExtResource("1_todoq")

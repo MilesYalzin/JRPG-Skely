@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StatBlock" load_steps=2 format=3 uid="uid://c3isd1dn58pqf"]
+
+[ext_resource type="Script" uid="uid://c0aabsc00erb6" path="res://Resources/statBlock.gd" id="1_cr7gu"]
+
+[resource]
+script = ExtResource("1_cr7gu")
+maxHP = 10
+HP = 10
+maxMP = 10
+MP = 10
+atk = 10
+def = 10
+mgk = 10
+res = 10
+spd = 20
+ticks = 0
+tickBonus = 0
+metadata/_custom_type_script = "uid://c0aabsc00erb6"

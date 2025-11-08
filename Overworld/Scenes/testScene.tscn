@@ -1,0 +1,45 @@
+[gd_scene load_steps=12 format=3 uid="uid://p2ufics87t0d"]
+
+[ext_resource type="Script" uid="uid://dmht3dyok4j5n" path="res://Overworld/Scenes/overworldScene.gd" id="1_3ej4y"]
+[ext_resource type="Texture2D" uid="uid://dfiwwyrnv0vxa" path="res://icon.svg" id="1_uqhlu"]
+[ext_resource type="AudioStream" uid="uid://cm4ov5o0iiktx" path="res://Music/battle theme.ogg" id="2_lh8g8"]
+[ext_resource type="Texture2D" uid="uid://bn2k1dspu7cdq" path="res://Battle/BG .png" id="2_n21f0"]
+[ext_resource type="Script" uid="uid://c4xu1m2mryiar" path="res://Resources/troopData.gd" id="3_n21f0"]
+[ext_resource type="PackedScene" uid="uid://dtpiv5j0ufrcs" path="res://Overworld/playerOverworld.tscn" id="3_u7ns6"]
+[ext_resource type="PackedScene" uid="uid://56uljq5w8rna" path="res://Overworld/enemyOverworld.tscn" id="4_fipni"]
+[ext_resource type="Script" uid="uid://bwokddw0rg2j" path="res://Resources/enemyData.gd" id="4_lh8g8"]
+[ext_resource type="Resource" uid="uid://d1773d3rg5qat" path="res://Enemies/testEnemy.tres" id="5_gqs0p"]
+[ext_resource type="PackedScene" uid="uid://cybdo71b34vis" path="res://Overworld/sceneSwitcher.tscn" id="10_gqs0p"]
+
+[sub_resource type="Resource" id="Resource_bxlvk"]
+script = ExtResource("3_n21f0")
+troops = Array[ExtResource("4_lh8g8")]([ExtResource("5_gqs0p"), ExtResource("5_gqs0p"), ExtResource("5_gqs0p")])
+metadata/_custom_type_script = "uid://c4xu1m2mryiar"
+
+[node name="testScene" type="Node2D"]
+script = ExtResource("1_3ej4y")
+battleMusic = ExtResource("2_lh8g8")
+battleScenario = ExtResource("2_n21f0")
+troops = Array[ExtResource("3_n21f0")]([SubResource("Resource_bxlvk")])
+music = "res://Music/Maid theme.ogg"
+path = "res://Overworld/Scenes/testScene.tscn"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(680, 656)
+scale = Vector2(7.94531, 8.85156)
+texture = ExtResource("1_uqhlu")
+
+[node name="playerOverworld" parent="." instance=ExtResource("3_u7ns6")]
+position = Vector2(536, 296)
+
+[node name="enemyOverworld" parent="." node_paths=PackedStringArray("stage") instance=ExtResource("4_fipni")]
+position = Vector2(528, 552)
+stage = NodePath("..")
+
+[node name="sceneSwitcherRoot" parent="." instance=ExtResource("10_gqs0p")]
+offset_bottom = 112.0
+
+[node name="sceneSwitcherRoot2" parent="." instance=ExtResource("10_gqs0p")]
+offset_left = 104.0
+offset_right = 248.0
+offset_bottom = 104.0
