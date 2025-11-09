@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dh4e7uvecrctb"]
+[gd_scene load_steps=3 format=3 uid="uid://dh4e7uvecrctb"]
 
 [ext_resource type="Script" uid="uid://bwln3wn85711m" path="res://UI/menuClass.gd" id="1_uikj7"]
+[ext_resource type="Script" uid="uid://dlst4qc61juup" path="res://UI/cursor.gd" id="2_8wmxx"]
 
 [node name="menuRoot" type="Control"]
 layout_mode = 3
@@ -20,3 +21,5 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_8wmxx")
+metadata/_custom_type_script = "uid://dlst4qc61juup"

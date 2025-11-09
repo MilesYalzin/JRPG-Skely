@@ -25,9 +25,10 @@ func editIndex(dir:int):
 	updatePosition()
 	
 func confirm():
-		var opt = menu.options[index]
-		if opt is Dictionary and opt.get("enabled",true):
-			opt["action"].call()
+	print(index)
+	var opt = menu.options[index]
+	if opt is Dictionary and opt.get("enabled",true):
+		opt["action"].call()
 
 func updatePosition():
 	var btn = menu.get_button(index)

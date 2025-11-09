@@ -3,8 +3,8 @@ class_name MenuClass
 
 var options: Array = []
 var selectedIndex = 0
-@onready var buttonList = $buttonList
-@onready var cursor = $Cursor
+@onready var buttonList: Container = $buttonList
+@onready var cursor: Cursor = $Cursor
 	
 func setup(_options: Array, fill: bool = false) -> void:
 	options = _options
