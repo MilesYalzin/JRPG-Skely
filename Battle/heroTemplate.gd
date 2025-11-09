@@ -32,7 +32,7 @@ func _ready() -> void:
 func takeTurn():
 	setState("ready")
 
-	menu = MenuClass.newMenu(options,UILayer,menuPos)
+	menu = MenuFactory.newMenu(options,UILayer,menuPos)
 
 func onAttack():
 

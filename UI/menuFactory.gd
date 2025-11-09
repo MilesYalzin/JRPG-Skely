@@ -8,8 +8,7 @@ static func newSideMenu (_options:Array, parent: Node, _position:Vector2) -> Men
 	return spawnMenu("res://UI/sideMenu.tscn", _options, parent, _position, true)
 
 static func spawnMenu(path: String, _options:Array, parent: Node, _position: Vector2, fill := false) -> MenuClass:
-	var menuScene : PackedScene = load(path)
-	var menuInstance : MenuClass = menuScene.instantiate()
+	var menuInstance : MenuClass = load(path).instantiate()
 	parent.add_child(menuInstance)
 	
 	menuInstance.position = _position

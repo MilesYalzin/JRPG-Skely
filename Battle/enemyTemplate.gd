@@ -1,7 +1,7 @@
 extends Node2D
 
-var data : EnemyData
-var AINode
+var data: EnemyData
+var AINode: Node
 
 func setup(instanceData : EnemyData):
 	data = instanceData.duplicate(true)
