@@ -9,28 +9,14 @@
 
 [sub_resource type="Resource" id="Resource_oxguj"]
 script = ExtResource("1_n1j82")
-maxHP = 10
-HP = 10
-maxMP = 10
-MP = 10
-atk = 10
-def = 10
-mgk = 10
-res = 10
-spd = 20
-ticks = 0
-tickBonus = 0
 metadata/_custom_type_script = "uid://c0aabsc00erb6"
 
 [resource]
 script = ExtResource("1_l5jw0")
-id = ""
-num = 0
 name = "Artoria"
 baseStats = SubResource("Resource_oxguj")
 AI = ExtResource("1_pog4k")
 sprite = ExtResource("5_txax4")
 expDrop = 100
 skills = Array[ExtResource("2_s4bg0")]([ExtResource("4_pog4k")])
-weakTo = Array[int]([])
 metadata/_custom_type_script = "uid://bwokddw0rg2j"
