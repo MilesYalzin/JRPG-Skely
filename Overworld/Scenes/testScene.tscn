@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://p2ufics87t0d"]
+[gd_scene load_steps=13 format=3 uid="uid://p2ufics87t0d"]
 
 [ext_resource type="Script" uid="uid://dmht3dyok4j5n" path="res://Overworld/Scenes/overworldScene.gd" id="1_3ej4y"]
 [ext_resource type="Texture2D" uid="uid://dfiwwyrnv0vxa" path="res://icon.svg" id="1_uqhlu"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://56uljq5w8rna" path="res://Overworld/enemyOverworld.tscn" id="4_fipni"]
 [ext_resource type="Script" uid="uid://bwokddw0rg2j" path="res://Resources/enemyData.gd" id="4_lh8g8"]
 [ext_resource type="Resource" uid="uid://d1773d3rg5qat" path="res://Enemies/testEnemy.tres" id="5_gqs0p"]
-[ext_resource type="PackedScene" uid="uid://cybdo71b34vis" path="res://Overworld/sceneSwitcher.tscn" id="10_gqs0p"]
+[ext_resource type="PackedScene" uid="uid://cybdo71b34vis" path="res://Overworld/sceneSwitcherNineSlice.tscn" id="10_gqs0p"]
+[ext_resource type="PackedScene" uid="uid://dx3i4xdlm663u" path="res://Overworld/sceneSwitcherParticles.tscn" id="11_bxlvk"]
 
 [sub_resource type="Resource" id="Resource_bxlvk"]
 script = ExtResource("3_n21f0")
@@ -41,5 +42,11 @@ offset_bottom = 112.0
 
 [node name="sceneSwitcherRoot2" parent="." instance=ExtResource("10_gqs0p")]
 offset_left = 104.0
-offset_right = 248.0
-offset_bottom = 104.0
+offset_right = 136.0
+
+[node name="NinePatchRect" parent="." instance=ExtResource("11_bxlvk")]
+offset_left = 112.0
+offset_top = 200.0
+offset_right = 144.0
+offset_bottom = 232.0
+towards = 1

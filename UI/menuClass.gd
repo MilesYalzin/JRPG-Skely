@@ -36,10 +36,10 @@ func clearMenu(node):
 		child.queue_free()
 		
 
-func get_button(index: int) -> Control:
+func getButton(index: int) -> Control:
 	return buttonList.get_child(index)
 
-func get_count() -> int:
+func getCount() -> int:
 	return buttonList.get_child_count()
 	
 func updateCursor():

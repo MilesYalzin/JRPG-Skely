@@ -44,10 +44,6 @@ func fromDict(data:Dictionary):
 	location = scenePath
 
 	
-	var pos = data.get("position", {})
-	position_x = int(pos.get("x", 0))
-	position_y = int(pos.get("y", 0))
-	
 	currentParty = []
 	for path in data.get("currentParty", []):
 		var res = load(path)
@@ -67,6 +63,10 @@ func fromDict(data:Dictionary):
 		get_tree().root.add_child(newScene)
 		get_tree().current_scene.queue_free()
 		get_tree().current_scene = newScene
+
+	var pos = data.get("position", {})
+	position_x = int(pos.get("x", 0))
+	position_y = int(pos.get("y", 0))
 
 	call_deferred("applyData")
 

@@ -1,0 +1,74 @@
+[gd_scene load_steps=14 format=3 uid="uid://dx3i4xdlm663u"]
+
+[ext_resource type="Texture2D" uid="uid://bm5wq5l3c0ws8" path="res://Overworld/Gradient.png" id="1_eroyt"]
+[ext_resource type="Script" uid="uid://b4pbhy7gxrn3h" path="res://Overworld/sceneSwitcherArea.gd" id="2_8xb1r"]
+[ext_resource type="Script" uid="uid://bunkdkalbw7yk" path="res://Overworld/sizeMatchParticle.gd" id="2_nmhgf"]
+[ext_resource type="Script" uid="uid://dxv82cn60cvan" path="res://Overworld/sceneSwitcherParticles.gd" id="2_wbeqs"]
+[ext_resource type="Script" uid="uid://vhscy7wlwkno" path="res://Overworld/sizeMatch.gd" id="3_nmhgf"]
+
+[sub_resource type="Curve" id="Curve_a72kq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9830508, 0), -3.182022, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eroyt"]
+curve = SubResource("Curve_a72kq")
+
+[sub_resource type="Gradient" id="Gradient_8xb1r"]
+colors = PackedColorArray(0.19868857, 0.10846358, 0.039358765, 1, 0.7054904, 0.5170116, 0.2560263, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nmhgf"]
+gradient = SubResource("Gradient_8xb1r")
+width = 128
+
+[sub_resource type="Curve" id="Curve_gsnya"]
+_data = [Vector2(0, 1), 0.0, -0.6292134, 0, 1, Vector2(1, 0.37078655), -0.6292134, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a72kq"]
+curve = SubResource("Curve_gsnya")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a72kq"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 16, 0)
+velocity_pivot = Vector3(1, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 125.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_a72kq")
+color_ramp = SubResource("GradientTexture1D_nmhgf")
+alpha_curve = SubResource("CurveTexture_eroyt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmhgf"]
+size = Vector2(32, 32)
+
+[node name="sceneSwitcherRoot" type="NinePatchRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_eroyt")
+region_rect = Rect2(0, 16, 64, 48)
+script = ExtResource("2_wbeqs")
+
+[node name="particleGenerator" type="GPUParticles2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 16)
+amount = 800
+lifetime = 0.3
+speed_scale = 0.2
+process_material = SubResource("ParticleProcessMaterial_a72kq")
+script = ExtResource("2_nmhgf")
+
+[node name="sceneSwitcher" type="Area2D" parent="."]
+position = Vector2(0, 16)
+script = ExtResource("2_8xb1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sceneSwitcher"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_nmhgf")
+script = ExtResource("3_nmhgf")
+
+[connection signal="body_entered" from="sceneSwitcher" to="sceneSwitcher" method="_on_body_entered"]

@@ -22,9 +22,10 @@ static func spawnConfirm(text : String, parent, _prev):
 func _ready() -> void:
 	update_cursor_position()
 	prev.set_process(false)
+	prev.get_node("Cursor").set_process(false)
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("down"):
 		selected_index = (selected_index + 1) % buttons.size()
 		update_cursor_position()
@@ -44,9 +45,8 @@ func update_cursor_position():
 func _on_button_pressed(button):
 	if button.name == "YES":
 		emit_signal("confirmed")
-		queue_free()
-		prev.set_process(true)
 	else:
 		emit_signal("cancelled")
-		queue_free()
-		prev.set_process(true)
+	queue_free()
+	prev.set_process(true)
+	prev.get_node("Cursor").set_process(true)

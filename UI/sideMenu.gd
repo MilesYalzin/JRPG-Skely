@@ -24,11 +24,12 @@ func saveGame():
 	var confirm = Confirm.spawnConfirm("Would you like to save?",layer, menu)
 	confirm.confirmed.connect(func():
 		PlayerData.saveGame()
+		print("Game saved!")
 		)
 		
 
-	print("Game saved!")
-	
+
+
 func loadGame():
 	var confirm = Confirm.spawnConfirm("Are you sure you want to load?",layer, menu)
 	confirm.confirmed.connect(func():
@@ -36,8 +37,9 @@ func loadGame():
 		await transition.fadeOut()
 		PlayerData.loadGame()
 		await transition.fadeIn()
+		print("Gaem loaded")
 		)
-	print("Gaem loaded")
+
 	
 func quitGame():
 	var confirm = Confirm.spawnConfirm("Are you sure you want to quit?",layer, menu)

@@ -16,4 +16,4 @@ func updateShape():
 	shape.size = parent.size
 
 	global_position = parent.global_position + parent.size * 0.5
-	rotation = parent.rotation
+	

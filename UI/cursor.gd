@@ -1,10 +1,10 @@
 extends ColorRect
 class_name Cursor
 
-var menu: MenuClass
+var menu
 var index :int = 0
 
-func linkTo(_menu: MenuClass):
+func linkTo(_menu):
 	menu = _menu
 	updatePosition()
 	
@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 
 
 func editIndex(dir:int):
-	var count = menu.get_count()
+	var count = menu.getCount()
 	if count == 0: return
 	index = (index + dir + count) % count
 	updatePosition()
@@ -31,6 +31,6 @@ func confirm():
 		opt["action"].call()
 
 func updatePosition():
-	var btn = menu.get_button(index)
+	var btn = menu.getButton(index)
 	var offset = Vector2(-size.x - 4, btn.size.y / 2 - size.y / 2)
 	position = btn.global_position - get_parent().global_position + offset
