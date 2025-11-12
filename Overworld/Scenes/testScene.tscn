@@ -49,4 +49,4 @@ offset_left = 112.0
 offset_top = 200.0
 offset_right = 144.0
 offset_bottom = 232.0
-towards = 1
+region_rect = Rect2(0, 0, 64, 64)

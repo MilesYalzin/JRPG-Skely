@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7pxyg7uly2cq"]
+[gd_scene load_steps=3 format=3 uid="uid://b7pxyg7uly2cq"]
 
 [ext_resource type="Script" uid="uid://d3lacp6umb4s" path="res://Battle/heroTemplate.gd" id="1_ggssh"]
+[ext_resource type="PackedScene" uid="uid://mhsdr8utdfu0" path="res://Battle/statusManager.tscn" id="2_dirk4"]
 
 [node name="heroTemplate" type="Node2D"]
 script = ExtResource("1_ggssh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="StatusManager" parent="." instance=ExtResource("2_dirk4")]

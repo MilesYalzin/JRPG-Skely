@@ -1,10 +1,39 @@
-[gd_scene load_steps=14 format=3 uid="uid://dx3i4xdlm663u"]
+[gd_scene load_steps=21 format=3 uid="uid://dx3i4xdlm663u"]
 
-[ext_resource type="Texture2D" uid="uid://bm5wq5l3c0ws8" path="res://Overworld/Gradient.png" id="1_eroyt"]
 [ext_resource type="Script" uid="uid://b4pbhy7gxrn3h" path="res://Overworld/sceneSwitcherArea.gd" id="2_8xb1r"]
 [ext_resource type="Script" uid="uid://bunkdkalbw7yk" path="res://Overworld/sizeMatchParticle.gd" id="2_nmhgf"]
 [ext_resource type="Script" uid="uid://dxv82cn60cvan" path="res://Overworld/sceneSwitcherParticles.gd" id="2_wbeqs"]
 [ext_resource type="Script" uid="uid://vhscy7wlwkno" path="res://Overworld/sizeMatch.gd" id="3_nmhgf"]
+
+[sub_resource type="Gradient" id="Gradient_wbeqs"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2aii4"]
+gradient = SubResource("Gradient_wbeqs")
+
+[sub_resource type="Gradient" id="Gradient_nmhgf"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wbeqs"]
+gradient = SubResource("Gradient_nmhgf")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_2aii4"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_776ip"]
+gradient = SubResource("Gradient_2aii4")
+fill_from = Vector2(0.5080214, 1)
+fill_to = Vector2(0.47058824, 0.010695187)
+
+[sub_resource type="Gradient" id="Gradient_jt2a3"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u6m3s"]
+gradient = SubResource("Gradient_jt2a3")
+fill_from = Vector2(0.52991456, 0)
+fill_to = Vector2(0.508547, 1)
 
 [sub_resource type="Curve" id="Curve_a72kq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9830508, 0), -3.182022, 0.0, 0, 0]
@@ -42,16 +71,17 @@ scale_curve = SubResource("CurveTexture_a72kq")
 color_ramp = SubResource("GradientTexture1D_nmhgf")
 alpha_curve = SubResource("CurveTexture_eroyt")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmhgf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xb1r"]
 size = Vector2(32, 32)
 
 [node name="sceneSwitcherRoot" type="NinePatchRect"]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
-texture = ExtResource("1_eroyt")
+texture = SubResource("GradientTexture2D_2aii4")
 region_rect = Rect2(0, 16, 64, 48)
 script = ExtResource("2_wbeqs")
+textures = Array[Texture]([SubResource("GradientTexture2D_wbeqs"), SubResource("GradientTexture2D_2aii4"), SubResource("GradientTexture2D_776ip"), SubResource("GradientTexture2D_u6m3s")])
 
 [node name="particleGenerator" type="GPUParticles2D" parent="."]
 texture_repeat = 2
@@ -67,8 +97,9 @@ position = Vector2(0, 16)
 script = ExtResource("2_8xb1r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sceneSwitcher"]
+visible = false
 position = Vector2(16, 0)
-shape = SubResource("RectangleShape2D_nmhgf")
+shape = SubResource("RectangleShape2D_8xb1r")
 script = ExtResource("3_nmhgf")
 
 [connection signal="body_entered" from="sceneSwitcher" to="sceneSwitcher" method="_on_body_entered"]

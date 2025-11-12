@@ -14,6 +14,7 @@ func _process(_delta):
 
 func updateShape():
 	var targetSize = parent.size
+	amount = max(targetSize.x, targetSize.y) / 8 * 200
 	match parent.towards:
 		parent.DIRECTION.Right:
 			position.y = parent.size.y * 0.5

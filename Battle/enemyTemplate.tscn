@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://eie5aoye4tuu"]
+[gd_scene load_steps=3 format=3 uid="uid://eie5aoye4tuu"]
 
 [ext_resource type="Script" uid="uid://w3sl3eim08gx" path="res://Battle/enemyTemplate.gd" id="1_uj6g7"]
+[ext_resource type="PackedScene" uid="uid://mhsdr8utdfu0" path="res://Battle/statusManager.tscn" id="2_ptwnd"]
 
 [node name="enemyTemplate" type="Node2D"]
 script = ExtResource("1_uj6g7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="StatusManager" parent="." instance=ExtResource("2_ptwnd")]
