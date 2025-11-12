@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtpiv5j0ufrcs"]
+[gd_scene load_steps=12 format=3 uid="uid://dtpiv5j0ufrcs"]
 
 [ext_resource type="Texture2D" uid="uid://b1ry6i811qcp3" path="res://Overworld/reemuh overworld.png" id="1_hpjvf"]
 [ext_resource type="Script" uid="uid://cfw8a8rp8tg86" path="res://Overworld/playerOverworld.gd" id="1_q2cw2"]
@@ -11,6 +11,22 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("1_hpjvf")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w56m"]
+atlas = ExtResource("1_hpjvf")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0k1c"]
+atlas = ExtResource("1_hpjvf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7ker"]
+atlas = ExtResource("1_hpjvf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnlpn"]
+atlas = ExtResource("1_hpjvf")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5w56m"]
 animations = [{
 "frames": [{
@@ -22,7 +38,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"walkDown",
-"speed": 5.0
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w56m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0k1c")
+}],
+"loop": true,
+"name": &"walkSide",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7ker")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnlpn")
+}],
+"loop": true,
+"name": &"walkUp",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0k1c"]
@@ -37,6 +75,7 @@ script = ExtResource("1_q2cw2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5w56m")
 animation = &"walkDown"
+frame_progress = 0.32663983
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1)

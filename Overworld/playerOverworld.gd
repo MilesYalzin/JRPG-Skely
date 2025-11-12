@@ -8,7 +8,7 @@ var pauseMenu = preload("res://UI/pauseMenu.tscn")
 var canSlash = true
 var cooldown = 1.5
 
-@onready var anim = $AnimatedSprite2D
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(_delta: float) -> void:
 	if canSlash != false:
@@ -29,17 +29,21 @@ func movement():
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var mov = Vector2(x_mov,y_mov)
 	
-	
 	if mov != Vector2.ZERO:
 		facingDirection = mov.normalized()
+		var animToPlay: StringName
 		if abs(mov.x) > abs(mov.y):
-			anim.play("walkSide")
+			animToPlay = &"walkSide"
 			anim.flip_h = mov.x > 0
 		elif mov.y < 0:
-			anim.play("walkUp")
+			animToPlay = &"walkUp"
 		else:
-			anim.play("walkDown")
+			animToPlay = &"walkDown"
+		if anim.animation != animToPlay or not anim.is_playing():
+			anim.play(animToPlay)
+			anim.frame = 1
 	else:
+		anim.frame = 0
 		anim.stop()
 	
 	velocity = mov.normalized()*movementSpeed
