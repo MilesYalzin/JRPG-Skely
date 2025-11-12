@@ -14,9 +14,9 @@ func _ready():
 		AudioManager.playMusic(music, false, true)
 	PlayerData.location = path
 	randomize()
-	PlayerData.autoSave()
 
 func startBattle(blob, preempt):
+	PlayerData.autoSave()
 	enemyArray = troops[randi_range(0,troops.size()-1)]
 	playerArray = PlayerData.currentParty
 	

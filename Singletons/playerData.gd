@@ -3,16 +3,23 @@ extends Node
 var location : String
 var position_x : int
 var position_y : int
+var inventory: Array[Item]
+var closing := false
 
 var currentParty = []
 
 func _ready():
-	self.process_mode = Node.PROCESS_MODE_ALWAYS
-	var re = load("res://Heroes/Cirno.tres")
-
-	
-	currentParty = [re.duplicate(true)]
-	
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().set_auto_accept_quit(false)
+	call_deferred("autoLoad")
+		
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		if closing:
+			return
+		closing = true
+		await autoSave()
+		get_tree().quit()
 
 func collectData(_player: Node):
 	position_x = _player.global_position.x
@@ -23,18 +30,19 @@ func toDict() -> Dictionary:
 	for r in currentParty:
 		if r:
 			partyPaths.append(r.resource_path)
-
+	var invSerialized: Array = inventory.map(func(i: Item): return i.serialize())
+	
 	var d := {
-			"location": location,
-			"position": {"x": position_x, "y": position_y},
-			
-			"currentParty": partyPaths,
-			
-			"keyManager": {
-				"chests": KeyManager.chests,
-				"quests": KeyManager.quests,
-				"cutscenes": KeyManager.cutscenes
-			}
+		"location": location,
+		"position": {"x": position_x, "y": position_y},
+		"inventory": invSerialized,
+		"currentParty": partyPaths,
+		
+		"keyManager": {
+			"chests": KeyManager.chests,
+			"quests": KeyManager.quests,
+			"cutscenes": KeyManager.cutscenes
+		}
 	}
 	return d
 
@@ -56,7 +64,14 @@ func fromDict(data:Dictionary):
 		KeyManager.chests = km.get("chests", {})
 		KeyManager.quests = km.get("quests", {})
 		KeyManager.cutscenes = km.get("cutscenes", {})
-
+	
+	inventory = []
+	var invSerialized: Array = data.get("inventory", [])
+	for i: Dictionary in invSerialized:
+		var item = Item.deserialize(i)
+		if item is Item:
+			inventory.append(Item.deserialize(i))
+	
 	if location != "":
 		var loaded = load(location) as PackedScene
 		var newScene = loaded.instantiate()
@@ -70,7 +85,6 @@ func fromDict(data:Dictionary):
 
 	call_deferred("applyData")
 
-
 func applyData():
 	var _player = get_tree().current_scene.get_node("playerOverworld")
 	_player.global_position = Vector2(position_x,position_y)
@@ -80,7 +94,6 @@ func saveGame(path := "user://save.json"):
 	var dir = DirAccess.open("user://")
 	if dir and not dir.dir_exists("units"):
 		dir.make_dir("units")
-
 
 	for unit in currentParty:
 		if unit:
@@ -96,7 +109,7 @@ func saveGame(path := "user://save.json"):
 	var saveDict = self.toDict()
 	var json = JSON.stringify(saveDict, "\t")
 	
-	var file = FileAccess.open("user://save.json", FileAccess.WRITE)
+	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file:
 		file.store_string(json)
 		file.close()
@@ -117,6 +130,11 @@ func loadGame(path := "user://save.json"):
 		return # safety to ensure bad files aren't loaded
 		
 	fromDict(parsed)
+	 
+	if currentParty.is_empty():
+		currentParty = [ResourceLoader.load("res://Heroes/Cirno.tres", "HeroData", ResourceLoader.CACHE_MODE_REPLACE_DEEP)]
+	if inventory.is_empty():
+		inventory = [Item.deserialize({"resource_path": "uid://bj5kgd03i6jt7", "amount": 1})]
 
 func autoSave():
 	saveGame("user://autosave.json")

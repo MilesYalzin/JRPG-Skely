@@ -9,7 +9,7 @@ var holdTime = 0
 signal fadeOutFinish
 signal fadeInFinish
 
-static func battleTrans(parent, _fadeTime = 0.5, _holdTime = 0):
+static func battleTrans(parent, _fadeTime := 0.5, _holdTime := 0.0):
 	var t = preload("res://UI/transitionBattle.tscn").instantiate()
 	t.fadeTime = _fadeTime
 	t.holdTime = _holdTime
