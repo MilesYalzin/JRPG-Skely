@@ -4,15 +4,5 @@
 
 [resource]
 script = ExtResource("1_cr7gu")
-maxHP = 10
-HP = 10
-maxMP = 10
-MP = 10
-atk = 10
-def = 10
-mgk = 10
-res = 10
-spd = 20
-ticks = 0
-tickBonus = 0
+spd = 200
 metadata/_custom_type_script = "uid://c0aabsc00erb6"

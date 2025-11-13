@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="HeroData" load_steps=7 format=3 uid="uid://4mxgj8wjlsc6"]
+[gd_resource type="Resource" script_class="HeroData" load_steps=9 format=3 uid="uid://4mxgj8wjlsc6"]
 
 [ext_resource type="Script" uid="uid://b66jhbh22yqw7" path="res://Resources/heroData.gd" id="1_0q8cs"]
 [ext_resource type="Resource" uid="uid://c3isd1dn58pqf" path="res://Heroes/Graphics/Stats/CirnoBase.tres" id="1_sluk2"]
 [ext_resource type="Script" uid="uid://fg7av2pufmrp" path="res://Resources/skills.gd" id="2_jeu6f"]
+[ext_resource type="Resource" uid="uid://pfj6wasldrb3" path="res://Skills/poisonMist.tres" id="4_5oiq0"]
+[ext_resource type="Resource" uid="uid://b0f4aiaeoga7u" path="res://Skills/attackPhys.tres" id="4_31l45"]
 [ext_resource type="SpriteFrames" uid="uid://mfs5614uku7c" path="res://Heroes/Graphics/Sprite Frames/Cirno.tres" id="4_oo5n5"]
 [ext_resource type="Script" uid="uid://b1i1spvdeh5oj" path="res://Resources/statGrowth.gd" id="5_5oiq0"]
 
@@ -18,5 +20,5 @@ baseStats = ExtResource("1_sluk2")
 statGrowth = SubResource("Resource_31l45")
 sprite = ExtResource("4_oo5n5")
 weakTo = Array[int]([1])
-skills = Array[ExtResource("2_jeu6f")]([null])
+skills = Array[ExtResource("2_jeu6f")]([ExtResource("4_31l45"), ExtResource("4_5oiq0")])
 metadata/_custom_type_script = "uid://b66jhbh22yqw7"

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfo7yak66rklw"]
+[gd_scene load_steps=2 format=3 uid="uid://bfo7yak66rklw"]
 
 [ext_resource type="Script" uid="uid://bh2n68eniin0t" path="res://UI/skillMenu.gd" id="1_d7hrh"]
-[ext_resource type="PackedScene" uid="uid://c44kxw6bjv32a" path="res://UI/cursor.tscn" id="2_kk678"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -23,13 +22,6 @@ offset_bottom = 192.0
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="Cursor" parent="." instance=ExtResource("2_kk678")]
-layout_mode = 1
-offset_left = -48.0
-offset_top = 40.0
-offset_right = -8.0
-offset_bottom = 80.0
-
 [node name="descBox" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -42,3 +34,8 @@ grow_horizontal = 2
 custom_minimum_size = Vector2(168, 168)
 layout_mode = 2
 autowrap_mode = 2
+
+[node name="Cursor" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BattleStatus" load_steps=3 format=3 uid="uid://i365pgn3clpw"]
+
+[ext_resource type="Script" uid="uid://dhjkmsonwaudg" path="res://Skills/Battle Statuses/atkUp.gd" id="1_lt1ip"]
+[ext_resource type="Script" uid="uid://ta7an0opo8p1" path="res://Resources/battleStatus.gd" id="1_q2eoo"]
+
+[resource]
+script = ExtResource("1_q2eoo")
+effect = ExtResource("1_lt1ip")
+metadata/_custom_type_script = "uid://ta7an0opo8p1"

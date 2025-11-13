@@ -2,6 +2,7 @@ extends Node2D
 
 var data: EnemyData
 var AINode: Node
+@onready var status = $StatusManager
 
 func setup(instanceData : EnemyData):
 	data = instanceData.duplicate(true)

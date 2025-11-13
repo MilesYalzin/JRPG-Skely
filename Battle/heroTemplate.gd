@@ -4,6 +4,7 @@ extends Node2D
 @onready var UILayer = currentBattle.get_node("battleUI")
 @onready var sprite = $AnimatedSprite2D
 @onready var glow = preload("res://glowMaterial.tres")
+@onready var status = $StatusManager
 
 var data : HeroData
 

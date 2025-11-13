@@ -8,7 +8,7 @@ enum TYPE {Buff,Debuff,StatusCon}
 #aesthetic components
 @export var name : String
 @export var icon : Texture2D
-@export var effectDescription : String
+@export_multiline var effectDescription : String
 
 #tracking data
 @export var defaultTurns : int #(how many turns it lasts by default)
@@ -21,5 +21,15 @@ var currentStacks : int = 0
 #logic data
 @export var timing : TRIGGER
 @export var type: TYPE
-@export var effect : Script
+@export var effect : Script:
+	set(value):
+		if value!=null:
+			effect = 	value.new()
 @export var chance : float 
+
+func rollChance(target):
+	if randf() > chance:
+		target.status.statuses.append()
+
+func runEffect():
+	effect.apply()

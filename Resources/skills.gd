@@ -10,7 +10,7 @@ enum SkillType {Offensive,SupportBuff, SupportHeal, Debuff, StatCon}
 @export var id : String
 @export var displayName: String
 @export var icon: Texture2D
-@export var description: String
+@export_multiline var description: String
 
 #costs
 #@export var costType
@@ -52,6 +52,8 @@ func executeAbility(caster, targets):
 			dmg = checkWeak(dmg,element,t)
 		dmg = int(dmg)
 		t.data.baseStats.changeHP(dmg)
+		if statusCon:
+			statusCon.rollChance(t)
 
 func matchFormula(caster, t):
 	match damageType:
