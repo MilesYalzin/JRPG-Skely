@@ -11,7 +11,9 @@ var currentParty = []
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().set_auto_accept_quit(false)
-	call_deferred("autoLoad")
+	if OS.has_feature("autoload") or OS.has_feature("autoLoad"):
+		call_deferred("autoLoad")
+	call_deferred("backupLoad")
 		
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -130,7 +132,8 @@ func loadGame(path := "user://save.json"):
 		return # safety to ensure bad files aren't loaded
 		
 	fromDict(parsed)
-	 
+	
+func backupLoad(): 
 	if currentParty.is_empty():
 		currentParty = [ResourceLoader.load("res://Heroes/Cirno.tres", "HeroData", ResourceLoader.CACHE_MODE_REPLACE_DEEP)]
 	if inventory.is_empty():
