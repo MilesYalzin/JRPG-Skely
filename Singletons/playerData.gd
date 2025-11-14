@@ -14,7 +14,16 @@ func _ready():
 	if OS.has_feature("autoload") or OS.has_feature("autoLoad"):
 		call_deferred("autoLoad")
 	call_deferred("backupLoad")
-		
+	
+func backupLoad(): 
+	if currentParty.is_empty():
+		currentParty = [ResourceLoader.load("res://Heroes/Cirno.tres", "HeroData", ResourceLoader.CACHE_MODE_REPLACE_DEEP)]
+	if inventory.is_empty():
+		var testItem: Item = load("uid://bj5kgd03i6jt7")
+		inventory = [testItem]
+	for item in inventory:
+		item.amount += 1
+
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		if closing:
@@ -72,7 +81,7 @@ func fromDict(data:Dictionary):
 	for i: Dictionary in invSerialized:
 		var item = Item.deserialize(i)
 		if item is Item:
-			inventory.append(Item.deserialize(i))
+			inventory.append(item)
 	
 	if location != "":
 		var loaded = load(location) as PackedScene
@@ -132,12 +141,6 @@ func loadGame(path := "user://save.json"):
 		return # safety to ensure bad files aren't loaded
 		
 	fromDict(parsed)
-	
-func backupLoad(): 
-	if currentParty.is_empty():
-		currentParty = [ResourceLoader.load("res://Heroes/Cirno.tres", "HeroData", ResourceLoader.CACHE_MODE_REPLACE_DEEP)]
-	if inventory.is_empty():
-		inventory = [Item.deserialize({"resource_path": "uid://bj5kgd03i6jt7", "amount": 1})]
 
 func autoSave():
 	saveGame("user://autosave.json")
