@@ -11,14 +11,15 @@ var cooldown = 1.5
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(_delta: float) -> void:
-	if canSlash != false:
+	if canSlash:
 		movement()
-	
-	if Input.is_action_just_pressed("accept") and canSlash:
+
+func _input(event: InputEvent):
+	if event.is_action_pressed("accept") and canSlash:
 		slash()
-		
-	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = !get_tree().paused
+	
+	if Input.is_action_just_pressed("pause") and not get_tree().paused:
+		get_tree().paused = true
 		var newMenu = pauseMenu.instantiate()
 		add_child(newMenu)
 

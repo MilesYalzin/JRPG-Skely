@@ -1,10 +1,13 @@
 extends Resource
 class_name Item
 
+enum Category {Misc, Equip, KeyItem}
+
 @export var name: String
 @export var pluralName: String
 @export_multiline var description: String
 @export var maxAmount := 1
+@export var category := Category.Misc
 
 var amount := 0:
 	set(x):
@@ -55,7 +58,9 @@ func serialize() -> Dictionary:
 	for property in serializedProperties:
 		s[property] = get(property)
 	for component in components:
-		for property in component.serializedProperties:
+		var sp = component.get(&"serializedProperties")
+		if not sp: sp = []
+		for property in sp:
 			if not component.resource_path in s:
 				s[component.resource_path] = {}
 			s[component.resource_path][property] = component.get(property)
@@ -75,10 +80,12 @@ static func deserialize(data: Dictionary) -> Item:
 				_: item.set(property, data[property])
 	if item.amount == 0:
 		return null
-	for component in item.components:
+	for component: ItemComponent in item.components:
 		var cdata: Dictionary = data.get(component.resource_path, {})
 		for property in cdata:
-			if property in component.serializedProperties:
+			var sp = component.get(&"serializedProperties")
+			if not sp: sp = []
+			if property in sp:
 				component.set(property, cdata[property])
 	return item
 	

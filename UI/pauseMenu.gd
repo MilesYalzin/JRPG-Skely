@@ -1,16 +1,19 @@
 extends CanvasLayer
 
-var ignoreInput = true
+var menu: Control
 
-func _ready() -> void:
-	$Control/HBoxContainer/PanelContainer/partyInfo.populateSlots(PlayerData.currentParty)
-
-func _process(_delta: float) -> void:
-	if ignoreInput:
-		ignoreInput = false
-		return
-		
-	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = !get_tree().paused
+func _input(event) -> void:
+	if event.is_action_pressed("pause"):
 		queue_free()
-		ignoreInput = true
+		get_tree().call_deferred("set_pause", false)
+
+func swapToMenu(path: String, ...args: Array):
+	if menu:
+		menu.queue_free()
+		menu = null
+	var menuResource = load(path)
+	if menuResource is GDScript: 
+		menu = menuResource.new.callv(args)
+	elif menuResource is PackedScene: 
+		menu = menuResource.instantiate()
+	%PanelContainer.add_child(menu)

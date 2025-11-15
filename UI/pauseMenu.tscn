@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://e2tosqhyr1f1"]
+[gd_scene load_steps=3 format=3 uid="uid://e2tosqhyr1f1"]
 
 [ext_resource type="Script" uid="uid://c5qojsrgd5tsm" path="res://UI/pauseMenu.gd" id="1_rj600"]
-[ext_resource type="Script" uid="uid://bitcnqnw6wkg8" path="res://UI/partyInfo.gd" id="2_rb6lg"]
 [ext_resource type="Script" uid="uid://bo5ec7hdi8fxo" path="res://UI/sideMenu.gd" id="3_my5lp"]
 
 [node name="pauseMenu" type="CanvasLayer"]
@@ -25,13 +24,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.0
-
-[node name="partyInfo" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer"]
-layout_mode = 2
-script = ExtResource("2_rb6lg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
 layout_mode = 2

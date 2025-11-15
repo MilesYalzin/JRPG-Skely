@@ -8,7 +8,6 @@ func linkTo(_menu):
 	menu = _menu
 	updatePosition()
 	
-	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("down"):
 		editIndex(1)
@@ -16,7 +15,6 @@ func _process(_delta: float) -> void:
 		editIndex(-1)
 	elif Input.is_action_just_pressed("accept"):
 		confirm()
-
 
 func editIndex(dir:int):
 	var count = menu.getCount()
@@ -27,7 +25,7 @@ func editIndex(dir:int):
 func confirm():
 	print(index)
 	var opt = menu.options[index]
-	if opt is Dictionary and opt.get("enabled",true):
+	if opt is Dictionary and opt.get("enabled", true):
 		opt["action"].call()
 
 func updatePosition():

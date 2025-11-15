@@ -27,8 +27,6 @@ enum SkillType {Offensive,SupportBuff, SupportHeal, Debuff, StatCon}
 @export var accuracy: float
 @export var statusCon : BattleStatus
 
-
-
 #targeting
 @export var defaultTarget:Targets
 @export var validTargets:Targets
