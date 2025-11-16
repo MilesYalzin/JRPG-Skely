@@ -59,7 +59,7 @@ func matchFormula(caster, t):
 			var _raw = (caster.data.baseStats.atk * basePower / (1+t.data.baseStats.def * (1.0 - ignorePercent)/200)) * randf_range(0.95, 1.05)
 			return _raw
 		DamageType.Magical:
-			var _raw = (caster.data.baseStats.mag * basePower / (1+t.data.baseStats.res * (1.0 - ignorePercent)/200)) * randf_range(0.95, 1.05)
+			var _raw = (caster.data.baseStats.mgk * basePower / (1+t.data.baseStats.res * (1.0 - ignorePercent)/200)) * randf_range(0.95, 1.05)
 			return _raw
 
 func checkWeak(raw, _element, target):

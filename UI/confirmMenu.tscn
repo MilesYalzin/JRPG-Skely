@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdlm1e6ut8wh2"]
+[gd_scene load_steps=3 format=3 uid="uid://bdlm1e6ut8wh2"]
 
 [ext_resource type="Script" uid="uid://ciqxiq685fj5" path="res://UI/confirmMenu.gd" id="1_skxuk"]
+[ext_resource type="Script" uid="uid://dlst4qc61juup" path="res://UI/cursor.gd" id="2_o17c3"]
 
 [node name="confirmMenu" type="Control"]
 process_mode = 3
@@ -59,3 +60,6 @@ size_flags_horizontal = 3
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_o17c3")
+axis = 0
+metadata/_custom_type_script = "uid://dlst4qc61juup"

@@ -64,14 +64,13 @@ func onFlee():
 		fleeText.text = "Failed!"
 		await  get_tree().create_timer(1).timeout
 		var fleeAttemps = currentBattle.fleeAttempts + 1
-		var chance = currentBattle.fleeingChance
 		match fleeAttemps:
 			1:
-				chance += 20
+				currentBattle.fleeingChance += 20
 			2: 
-				chance += 10
+				currentBattle.fleeingChance += 10
 			_: 
-				chance += 5
+				currentBattle.fleeingChance += 5
 		data.baseStats.changeTicks(-800)
 		fleeText.queue_free()
 		currentBattle.tickUp()

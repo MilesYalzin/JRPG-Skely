@@ -6,7 +6,7 @@ var targetVolume = 0.0
 func _ready():
 	volume_db = 0
 	
-func playMusic(path: String, fadeIn:bool = false, fadeOutPrev: bool = false):
+func playMusic(path: String, doFadeIn:bool = false, fadeOutPrev: bool = false):
 	stream = load(path)
 	if not stream:
 		push_error("MusicManager: Failed to load " + path)
@@ -17,11 +17,11 @@ func playMusic(path: String, fadeIn:bool = false, fadeOutPrev: bool = false):
 		
 
 	play()
-	if fadeIn:
+	if doFadeIn:
 		fadeIn()
 	
-func stopMusic(fadeOut: bool = false):
-	if fadeOut:
+func stopMusic(doFadeOut: bool = false):
+	if doFadeOut:
 		fadeOut()
 		await get_tree().create_timer(fadeTime).timeout
 	stop()

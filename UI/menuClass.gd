@@ -8,11 +8,15 @@ var selectedIndex = 0
 	
 func setup(_options: Array, fill: bool = false) -> void:
 	options = _options
+	cursor.setActive(true)
 	updateMenu(fill)
-	cursor.linkTo(self)
 	
 func updateMenu(fill = false):
 	clearMenu(buttonList)
+	if buttonList is HBoxContainer:
+		cursor.axis = Cursor.CursorAxis.X
+	elif buttonList is VBoxContainer:
+		cursor.axis = Cursor.CursorAxis.Y
 	for option in options:
 		var btn = Button.new()
 		
@@ -24,23 +28,13 @@ func updateMenu(fill = false):
 			btn.text = str(option.get("text"))
 			if not option.get("enabled", true):
 				btn.modulate = Color(0.6, 0.6, 0.6)
+			cursor.addOption(btn, option.get("confirm", option.get("action")), option.get("scrollover"))
 		else:
 			btn.text = str(option)
 		btn.focus_mode = Control.FOCUS_NONE
 		buttonList.add_child(btn)
-		
-	call_deferred("updateCursor")
+	cursor.call_deferred("updatePosition")
 
 func clearMenu(node):
 	for child in node.get_children():
 		child.queue_free()
-		
-
-func getButton(index: int) -> Control:
-	return buttonList.get_child(index)
-
-func getCount() -> int:
-	return buttonList.get_child_count()
-	
-func updateCursor():
-	cursor.updatePosition()

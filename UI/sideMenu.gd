@@ -4,7 +4,7 @@ extends PanelContainer
 var menu: MenuClass
 
 @onready var options := [
-	{"text": "Party", "action": Callable(layer, "swapToMenu").bind("uid://bitcnqnw6wkg8")},
+	#{"text": "Party", "action": Callable(layer, "swapToMenu").bind("uid://bitcnqnw6wkg8")},
 	#{"text": "Inventory", "action": Callable(layer, "swapToMenu").bind()},
 	#{"text": "Settings", "action": Callable(layer, "swapToMenu").bind()},
 	{"text": "Save Game", "action": Callable(self, "saveGame")},
@@ -14,6 +14,7 @@ var menu: MenuClass
 
 func _ready() -> void:
 	menu = MenuFactory.newSideMenu(options, self, Vector2(0,0))
+	layer.swapToMenu("uid://bitcnqnw6wkg8")
 #	menu.get_node("ButtonList").set_anchors_preset(Control.PRESET_FULL_RECT)
 
 #func _input(event: InputEvent) -> void:
@@ -21,14 +22,14 @@ func _ready() -> void:
 #		menu.cursor.linkTo()
 
 func saveGame():
-	var confirm = Confirm.spawnConfirm("Would you like to save?", layer, menu)
+	var confirm: Confirm = Confirm.spawnConfirm("Would you like to save?", layer)
 	confirm.confirmed.connect(func():
 		PlayerData.saveGame()
 		print("Game saved!")
 	)
 
 func loadGame():
-	var confirm = Confirm.spawnConfirm("Are you sure you want to load?", layer, menu)
+	var confirm = Confirm.spawnConfirm("Are you sure you want to load?", layer)
 	confirm.confirmed.connect(func():
 		var transition = TransitionEffect.play(get_tree().root, 0.5)
 		await transition.fadeOut()
@@ -38,5 +39,5 @@ func loadGame():
 	)
 	
 func quitGame():
-	var confirm = Confirm.spawnConfirm("Are you sure you want to quit?", layer, menu)
+	var confirm = Confirm.spawnConfirm("Are you sure you want to quit?", layer)
 	confirm.confirmed.connect(get_tree().quit)

@@ -26,22 +26,22 @@ var fleeAttempts = 0
 signal battleEnded(victory: bool)
 
 static func newBattle(_music: AudioStreamOggVorbis, _background: Texture2D, _enemyArray, _heroArray:Array, collided):
-	var newBattle = BATTLE_SCENE.instantiate()
-	newBattle.music = _music
-	newBattle.background = _background
+	var battle = BATTLE_SCENE.instantiate()
+	battle.music = _music
+	battle.background = _background
 	
-	newBattle.enemyArray = []
+	battle.enemyArray = []
 	for t in _enemyArray.troops:
-		newBattle.enemyArray.append(t)
+		battle.enemyArray.append(t)
 
-	newBattle.heroArray = _heroArray.duplicate()
+	battle.heroArray = _heroArray.duplicate()
 	
 	if collided.name == "playerArea":
-		newBattle.preempt = false
+		battle.preempt = false
 	elif collided.name == "Slash":
-		newBattle.preempt = true
+		battle.preempt = true
 	
-	return newBattle
+	return battle
 
 func _ready() -> void:
 	$Sprite2D.texture = background

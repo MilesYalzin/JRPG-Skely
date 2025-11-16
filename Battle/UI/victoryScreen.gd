@@ -1,6 +1,6 @@
 extends Control
 
-@onready var exp = $VBoxContainer/expLabel
+@onready var expLabel = $VBoxContainer/expLabel
 
 signal finished
 var readyToExit = false
@@ -11,10 +11,10 @@ var leveledUp = []
 func _ready() -> void:
 	showVictory(totalExp)
 
-func showVictory(totalExp):
+func showVictory(e):
 	await get_tree().create_timer(1.0).timeout
-	exp.visible = true
-	exp.text = exp.text + str(totalExp)
+	expLabel.visible = true
+	expLabel.text = expLabel.text + str(e)
 	
 	if leveledUp.is_empty() != true:
 		await showLevelUps()

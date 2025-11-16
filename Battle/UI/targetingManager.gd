@@ -30,42 +30,24 @@ func _ready() -> void:
 	else:
 		moveCursorToIndex(0)
 
-
-func _process(_delta: float) -> void:
-	if isAoE:
-		if Input.is_action_just_pressed("accept"):
-			confirmTarget()
-		if Input.is_action_just_pressed("cancel"):
-			cancelTarget()
-		return
-
-	var x_mov = 0.0
-	var y_mov = 0.0
-	var moved = false
-
-	if Input.is_action_just_pressed("right"):
-		x_mov = 1.0
-		moved = true
-	elif Input.is_action_just_pressed("left"):
-		x_mov = -1.0
-		moved = true
+func _input(event: InputEvent) -> void:
+	var dir := Vector2.ZERO
+	if event.is_action_pressed("right"):
+		dir.x = 1.0
+	elif event.is_action_pressed("left"):
+		dir.x = -1.0
 		
-	if Input.is_action_just_pressed("down"):
-		y_mov = 1.0
-		moved = true
-	elif Input.is_action_just_pressed("up"):
-		y_mov = -1.0
-		moved = true
+	if event.is_action_pressed("down"):
+		dir.y = 1.0
+	elif event.is_action_pressed("up"):
+		dir.y = -1.0
 	
-	var mov = Vector2(x_mov, y_mov)
+	if dir != Vector2.ZERO:
+		moveCursorInDirection(dir)
 	
-	if moved:
-		moveCursorInDirection(mov.normalized())
-	
-
-	if Input.is_action_just_pressed("accept"):
+	if event.is_action_pressed("accept"):
 		confirmTarget()
-	if Input.is_action_just_pressed("cancel"):
+	if event.is_action_pressed("cancel"):
 		cancelTarget()
 
 func moveCursorsToAll():
@@ -130,11 +112,9 @@ func updateTargetInfo(target):
 func confirmTarget():
 	var target
 	if !isAoE:
-
-		target = validTargets[index]
+		target = [validTargets[index]]
 	else:
-
-		target  = validTargets
+		target = validTargets
 	ability.executeAbility(caster, target)
 	queue_free()
 	$"..".victoryCheck()
