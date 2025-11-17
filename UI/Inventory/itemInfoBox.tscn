@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnw2ctp8la8wr"]
+
+[ext_resource type="Script" uid="uid://djyvgxnn0lnq3" path="res://UI/Inventory/itemInfoBox.gd" id="1_fxmqs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcqdt"]
+font_size = 24
+
+[node name="ItemInfoBox" type="VBoxContainer"]
+custom_minimum_size = Vector2(300, 230)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -976.0
+offset_bottom = -468.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fxmqs")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bcqdt")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="DescLabel" type="Label" parent="HBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bcqdt")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="IconTextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+stretch_mode = 3

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://biexk5x246fp7"]
+
+[ext_resource type="Script" uid="uid://bcdu2we0yp261" path="res://UI/Inventory/inventoryMenu.gd" id="1_dpm27"]
+[ext_resource type="PackedScene" uid="uid://cnw2ctp8la8wr" path="res://UI/Inventory/itemInfoBox.tscn" id="2_32yhe"]
+
+[node name="InventoryMenu" type="HBoxContainer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+script = ExtResource("1_dpm27")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="ItemInfoBox" parent="VBoxContainer" instance=ExtResource("2_32yhe")]
+unique_name_in_owner = true
+layout_mode = 2

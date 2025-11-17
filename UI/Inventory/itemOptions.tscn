@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://kxatstgxbnbo"]
+
+[node name="ItemOptions" type="PanelContainer"]
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2

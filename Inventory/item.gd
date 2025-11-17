@@ -5,6 +5,7 @@ enum Category {Misc, Equip, KeyItem}
 
 @export var name: String
 @export var pluralName: String
+@export var icon: Texture2D
 @export_multiline var description: String
 @export var maxAmount := 1
 @export var category := Category.Misc

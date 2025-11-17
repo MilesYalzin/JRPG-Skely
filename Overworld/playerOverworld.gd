@@ -18,7 +18,7 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("accept") and canSlash:
 		slash()
 	
-	if Input.is_action_just_pressed("pause") and not get_tree().paused:
+	if event.is_action_pressed("pause") and not get_tree().paused:
 		get_tree().paused = true
 		var newMenu = pauseMenu.instantiate()
 		add_child(newMenu)

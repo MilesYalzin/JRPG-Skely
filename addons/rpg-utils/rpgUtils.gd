@@ -36,3 +36,7 @@ static func get_ancestor_of_type(node: Node, type) -> Node:
 static func until_ready(node: Node) -> void:
 	if not node.is_node_ready():
 		await node.ready
+
+## Gets the name from an enum
+static func get_enum_value_name(_enum: Dictionary, value: int) -> String:
+	return _enum.find_key(value)

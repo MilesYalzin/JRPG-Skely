@@ -8,6 +8,7 @@ var selectedIndex = 0
 	
 func setup(_options: Array, fill: bool = false) -> void:
 	options = _options
+	if not cursor: cursor = Cursor.spawnCursor(self)
 	cursor.setActive(true)
 	updateMenu(fill)
 	

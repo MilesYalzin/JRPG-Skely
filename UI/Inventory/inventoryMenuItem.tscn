@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxgx7mxukttn5"]
+
+[ext_resource type="Script" uid="uid://cj5vju8qarl5r" path="res://UI/Inventory/inventoryMenuItem.gd" id="1_x0oj6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_83lus"]
+font_size = 24
+
+[node name="InventoryMenuItem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x0oj6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+
+[node name="NameLabel" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_83lus")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AmtLabel" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_83lus")
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
